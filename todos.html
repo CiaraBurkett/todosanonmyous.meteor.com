@@ -1,0 +1,29 @@
+<head>
+  <title>todos</title>
+</head>
+
+<body>
+   <h1>Things To Do</h1>
+   {{> todo_input}}
+   {{> todo_list}}
+</body>
+
+<template name="todo_input">
+   <form>
+      <input type="text" class="todo-add" placeholder="To do:" />
+      <button type="submit">Add</button>
+   </form>
+   <a href="#" class="clear">Clear completed </a>
+</template>
+<template name="todo_list">
+   <h2>{{todosCount}} things to do.</h2>
+   <ul>
+      {{#each todos}}
+         <li class="todo {{#if completed}}completed{{/if}}">
+            {{title}}
+            <input type="checkbox" class="todo-done"
+            checked="{{#if completed}}checked{{/if}}" />
+         </li>
+      {{/each}}
+   </ul>
+</template>
